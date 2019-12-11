@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardNews"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp">
+
+    <FrameLayout
+        android:id="@+id/frameNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="250dp">
+        <ImageView
+            android:id="@+id/ivNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </ImageView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/tvNewsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="This is news title"
+                android:maxLines="3"
+                android:textColor="@color/text_color_news_title"
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNewsTitle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvNewsSrc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CNB"
+                    android:textColor="@color/text_color_news_src"
+                    android:textSize="12sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/tvPublishedDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="2019-11-21"
+                    android:textColor="@color/text_color_news_src"
+                    android:textSize="15sp"
+                    android:textStyle="normal"></TextView>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+</androidx.cardview.widget.CardView>
