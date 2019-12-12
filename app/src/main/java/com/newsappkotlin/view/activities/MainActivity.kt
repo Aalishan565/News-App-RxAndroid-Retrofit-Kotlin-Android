@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.newsappkotlin.R
 import com.newsappkotlin.view.adapter.NewsAdapter
 import com.newsappkotlin.listener.MainActivityListener
 import com.newsappkotlin.dtos.Article
 import com.newsappkotlin.presenter.MainActivityPresenter
 import com.newsappkotlin.presenterimpl.MainActivityPresenterImpl
+import com.newsappkotlin.setDivider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainActivityListener {
@@ -24,8 +26,9 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
         Log.d(TAG, "onCreate()")
         presenter = MainActivityPresenterImpl(this)
         newsAdapter = NewsAdapter(this)
-        rvNews.layoutManager = LinearLayoutManager(this)
+        rvNews.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
         rvNews.adapter = newsAdapter
+        rvNews.setDivider(R.drawable.recycler_view_divider)
         presenter.callGetNewsReqApi()
     }
 

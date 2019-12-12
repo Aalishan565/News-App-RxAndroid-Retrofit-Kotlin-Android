@@ -1,10 +1,12 @@
 package com.newsappkotlin.view.adapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newsappkotlin.R
@@ -35,7 +37,7 @@ class NewsAdapter(private val context: Context) :
         holder.tvNewsSrc.text = newsList!![position].source.name
         holder.tvPublishedDate.text = newsList!![position].publishedAt
         Glide.with(context).load(newsList[position].urlToImage).into(holder.ivNews)
-        holder.frameNews.background = holder.ivNews.drawable
+        holder.ivNews.setScaleType(ImageView.ScaleType.FIT_XY);
         Log.d(TAG, "onBindViewHolder()${newsList[position].urlToImage}  ${holder.ivNews.drawable}")
 
     }

@@ -2,21 +2,25 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cardNews"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
-    android:layout_marginBottom="12dp">
+    android:layout_height="wrap_content">
 
     <FrameLayout
         android:id="@+id/frameNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:minHeight="250dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_card"></TextView>
+
         <ImageView
             android:id="@+id/ivNews"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-        </ImageView>
+            android:layout_height="match_parent"></ImageView>
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,8 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:text="This is news title"
                 android:maxLines="3"
+                android:text="This is news title"
                 android:textColor="@color/text_color_news_title"
                 android:textSize="20sp"
                 android:textStyle="bold"></TextView>
@@ -60,6 +64,5 @@
                     android:textStyle="normal"></TextView>
             </LinearLayout>
         </RelativeLayout>
-
     </FrameLayout>
 </androidx.cardview.widget.CardView>
