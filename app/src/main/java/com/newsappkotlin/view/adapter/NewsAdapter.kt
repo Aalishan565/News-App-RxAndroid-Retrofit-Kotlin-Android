@@ -37,7 +37,7 @@ class NewsAdapter(private val context: Context) :
         holder.tvNewsSrc.text = newsList!![position].source.name
         holder.tvPublishedDate.text = newsList!![position].publishedAt
         Glide.with(context).load(newsList[position].urlToImage).into(holder.ivNews)
-        holder.ivNews.setScaleType(ImageView.ScaleType.FIT_XY);
+        holder.ivNews.setScaleType(ImageView.ScaleType.FIT_XY)
         Log.d(TAG, "onBindViewHolder()${newsList[position].urlToImage}  ${holder.ivNews.drawable}")
 
     }
