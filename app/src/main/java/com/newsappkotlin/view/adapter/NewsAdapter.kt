@@ -1,7 +1,7 @@
 package com.newsappkotlin.view.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newsappkotlin.R
 import com.newsappkotlin.dtos.Article
+import com.newsappkotlin.view.activities.NewsDetailActivity
 import kotlinx.android.synthetic.main.row_item_news.view.*
 
 class NewsAdapter(private val context: Context) :
@@ -32,25 +33,28 @@ class NewsAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: NewsAdapterViewHolder, position: Int) {
-        //  Log.d(TAG, "onBindViewHolder()")
+        Log.d(TAG, "onBindViewHolder()${newsList[position].urlToImage}  ${holder.ivNews.drawable}")
         holder.tvNewsTitle.text = newsList!![position].title
         holder.tvNewsSrc.text = newsList!![position].source.name
         holder.tvPublishedDate.text = newsList!![position].publishedAt
         Glide.with(context).load(newsList[position].urlToImage).into(holder.ivNews)
-        holder.ivNews.setScaleType(ImageView.ScaleType.FIT_XY)
-        Log.d(TAG, "onBindViewHolder()${newsList[position].urlToImage}  ${holder.ivNews.drawable}")
+        holder.ivNews.scaleType = ImageView.ScaleType.FIT_XY
+        holder.cardNews.setOnClickListener {
+            Log.d(TAG, "card clicked on position: $position")
+            var intent = Intent(context, NewsDetailActivity::class.java)
+            context.startActivity(intent)
+        }
 
     }
 
     fun setDataToList(newsList: List<Article>) {
-        Log.d(TAG, "setDataToList() ${newsList}")
+        Log.d(TAG, "setDataToList() $newsList")
         this.newsList = newsList
         notifyDataSetChanged()
     }
 
     class NewsAdapterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cardNews = view.cardNews!!
-        val frameNews = view.frameNews!!
         val ivNews = view.ivNews!!
         val tvNewsTitle = view.tvNewsTitle!!
         val tvNewsSrc = view.tvNewsSrc!!
