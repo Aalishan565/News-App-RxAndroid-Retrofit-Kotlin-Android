@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
         Log.d(TAG, "onCreate()")
         presenter = MainActivityPresenterImpl(this)
         newsAdapter = NewsAdapter(this)
-        rvNews.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
+        rvNews.layoutManager = LinearLayoutManager(this)
         rvNews.adapter = newsAdapter
         rvNews.setDivider(R.drawable.recycler_view_divider)
         presenter.callGetNewsReqApi()
@@ -42,6 +42,5 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
         Log.d(TAG, "getApiResponseReqFail() list $message")
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
 
 }

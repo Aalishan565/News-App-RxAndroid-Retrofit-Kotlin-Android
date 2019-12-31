@@ -6,4 +6,5 @@ object MyAppConstant {
     const val COUNTRY_VALUE: String = "au"
     const val API_KEY: String = "apiKey"
     const val API_KEY_VALUE: String = "3ba636e5a7dd4224a989f9cb0ebb907e"
+    const val EXTRA_PARCELABLE_FOR_DETAIL: String = "detailNewsData"
 }

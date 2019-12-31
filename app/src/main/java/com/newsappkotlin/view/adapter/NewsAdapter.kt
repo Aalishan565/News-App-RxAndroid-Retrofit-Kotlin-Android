@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newsappkotlin.R
+import com.newsappkotlin.appUtils.MyAppConstant
 import com.newsappkotlin.dtos.Article
 import com.newsappkotlin.view.activities.NewsDetailActivity
 import kotlinx.android.synthetic.main.row_item_news.view.*
@@ -34,14 +35,16 @@ class NewsAdapter(private val context: Context) :
 
     override fun onBindViewHolder(holder: NewsAdapterViewHolder, position: Int) {
         Log.d(TAG, "onBindViewHolder()${newsList[position].urlToImage}  ${holder.ivNews.drawable}")
-        holder.tvNewsTitle.text = newsList!![position].title
-        holder.tvNewsSrc.text = newsList!![position].source.name
-        holder.tvPublishedDate.text = newsList!![position].publishedAt
+        holder.tvNewsTitle.text = newsList[position].title
+        holder.tvNewsSrc.text = newsList[position].source?.name
+        holder.tvPublishedDate.text = newsList[position].publishedAt
         Glide.with(context).load(newsList[position].urlToImage).into(holder.ivNews)
         holder.ivNews.scaleType = ImageView.ScaleType.FIT_XY
         holder.cardNews.setOnClickListener {
             Log.d(TAG, "card clicked on position: $position")
             var intent = Intent(context, NewsDetailActivity::class.java)
+            intent.putExtra(MyAppConstant.EXTRA_PARCELABLE_FOR_DETAIL,newsList[position])
+            Log.d(TAG, "newsList[position]: ${newsList[position]}")
             context.startActivity(intent)
         }
 

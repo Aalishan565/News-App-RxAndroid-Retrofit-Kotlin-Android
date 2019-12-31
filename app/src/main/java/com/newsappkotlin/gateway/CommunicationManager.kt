@@ -27,20 +27,18 @@ class CommunicationManager {
             //Need to put in build config file
            // url = "https://jsonplaceholder.typicode.com/"
             url = "https://newsapi.org/v2/"
-            if (null != url) {
-                val okHttpClient: OkHttpClient = OkHttpClient.Builder()
-                    .readTimeout(MyAppConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                    .connectTimeout(MyAppConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)
-                    .build()
+            val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+                .readTimeout(MyAppConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .connectTimeout(MyAppConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .build()
 
-                val retrofit = Retrofit.Builder()
-                    .baseUrl(url)
-                    .client(okHttpClient)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                api = retrofit.create(RetrofitAPI::class.java)
+            val retrofit = Retrofit.Builder()
+                .baseUrl(url)
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            api = retrofit.create(RetrofitAPI::class.java)
 
-            }
         } catch (e: Exception) {
             e.printStackTrace()
 

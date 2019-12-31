@@ -61,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:text="2019-11-21"
+                    android:maxLength="10"
                     android:textColor="@color/text_color_news_src"
                     android:textSize="15sp"
                     android:textStyle="normal"></TextView>
