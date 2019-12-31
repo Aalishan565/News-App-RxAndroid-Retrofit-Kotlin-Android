@@ -7,5 +7,5 @@
     <color name="bg">#464646</color>
     <color name="text_color_news_src">#bababa</color>
     <color name="text_color_news_title">#f2f2f2</color>
-    <color name="trpblack">#80000000</color>
+    <color name="transparent">#20000000</color>
 </resources>

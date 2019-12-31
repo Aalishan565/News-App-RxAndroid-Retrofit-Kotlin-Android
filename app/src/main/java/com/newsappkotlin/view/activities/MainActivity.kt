@@ -1,18 +1,17 @@
 package com.newsappkotlin.view.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.newsappkotlin.R
-import com.newsappkotlin.view.adapter.NewsAdapter
-import com.newsappkotlin.listener.MainActivityListener
+import com.newsappkotlin.appUtils.AppUtils
 import com.newsappkotlin.dtos.Article
+import com.newsappkotlin.listener.MainActivityListener
 import com.newsappkotlin.presenter.MainActivityPresenter
 import com.newsappkotlin.presenterimpl.MainActivityPresenterImpl
 import com.newsappkotlin.setDivider
+import com.newsappkotlin.view.adapter.NewsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainActivityListener {
@@ -40,7 +39,7 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
 
     override fun getApiResponseReqFail(message: String) {
         Log.d(TAG, "getApiResponseReqFail() list $message")
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        AppUtils.showToastMessage(this, message)
     }
 
 }
