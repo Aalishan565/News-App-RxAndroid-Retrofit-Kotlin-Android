@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 fun RecyclerView.setDivider(@DrawableRes drawableRes: Int) {
+
     val divider = DividerItemDecoration(
         this.context,
         DividerItemDecoration.VERTICAL

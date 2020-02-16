@@ -15,6 +15,7 @@ import com.newsappkotlin.view.adapter.NewsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainActivityListener {
+
     private val TAG = "MainActivity"
     private lateinit var presenter: MainActivityPresenter
     private lateinit var newsAdapter: NewsAdapter

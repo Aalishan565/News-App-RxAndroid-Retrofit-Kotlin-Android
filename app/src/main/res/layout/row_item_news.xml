@@ -15,12 +15,12 @@
         <ImageView
             android:id="@+id/ivNews"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ImageView>
+            android:layout_height="match_parent"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_card"></TextView>
+            android:background="@drawable/bg_card"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

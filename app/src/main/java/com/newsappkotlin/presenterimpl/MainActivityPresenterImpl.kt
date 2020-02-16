@@ -1,7 +1,6 @@
 package com.newsappkotlin.presenterimpl
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.util.Log
 import com.newsappkotlin.R
 import com.newsappkotlin.appUtils.AppUtils
@@ -10,33 +9,49 @@ import com.newsappkotlin.gateway.CommunicationManager
 import com.newsappkotlin.listener.MainActivityListener
 import com.newsappkotlin.presenter.MainActivityPresenter
 import com.newsappkotlin.view.activities.MainActivity
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+
 
 class MainActivityPresenterImpl(private val context: MainActivity) :
     MainActivityPresenter {
+
     var listener: MainActivityListener = context
     private val TAG = "MainActivityPresenterImpl"
 
     @SuppressLint("LongLogTag")
     override fun callGetNewsReqApi() {
+
         Log.d(TAG, "callGetNewsReqApi()")
         if (AppUtils.isNetworkAvailable(context)) {
+
             val communicationManager = CommunicationManager().getInstance()
-            val call = communicationManager.getNewsResponseReq()
-            call?.enqueue(object : Callback<NewsResponse> {
-                override fun onResponse(
-                    call: Call<NewsResponse>,
-                    response: Response<NewsResponse>?
-                ) {
-                    Log.d(TAG, "response ${response?.body()?.articles}")
-                    listener.getNewsResponseReqSuccess(response?.body()?.articles)
+            val observable: Observable<NewsResponse> =
+                communicationManager.getNewsResponseReq()!!.subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+            observable.subscribe(object : Observer<NewsResponse> {
+
+                override fun onSubscribe(d: Disposable) {
                 }
 
-                override fun onFailure(call: Call<NewsResponse>?, t: Throwable) {
-                    Log.d(TAG, "onFailure ${t.message}")
-                    t.message?.let { listener.getApiResponseReqFail(it) }
+                override fun onNext(response: NewsResponse) {
+                    //Todo
+                    Log.d(TAG, "response ${response?.articles}")
+                    listener.getNewsResponseReqSuccess(response?.articles)
+                }
+
+                override fun onError(e: Throwable) {
+                    if (e != null) {
+                        Log.d(TAG, "onFailure ${e.message}")
+                        e.message?.let { listener.getApiResponseReqFail(it) }
+                    }
+                }
+
+                override fun onComplete() {
+
                 }
             })
 
@@ -44,7 +59,5 @@ class MainActivityPresenterImpl(private val context: MainActivity) :
             Log.d(TAG, "No internet connection")
             listener.getApiResponseReqFail(context.getString(R.string.no_internet))
         }
-
-
     }
 }

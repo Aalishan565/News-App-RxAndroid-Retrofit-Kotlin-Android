@@ -8,13 +8,13 @@
     <ImageView
         android:id="@+id/ivNews"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
-        android:layout_height="match_parent"></ImageView>
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_card"></TextView>
+        android:background="@drawable/bg_card"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:text="This is news title"
             android:textColor="@color/text_color_news_title"
             android:textSize="29sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <RelativeLayout
             android:id="@+id/rlDetail"
@@ -58,7 +58,7 @@
                 android:text="CNB"
                 android:textColor="@color/text_color_news_title"
                 android:textSize="20sp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tvPublishedDate"
@@ -69,7 +69,7 @@
                 android:maxLength="10"
                 android:textColor="@color/text_color_news_title"
                 android:textSize="20sp"
-                android:textStyle="normal"></TextView>
+                android:textStyle="normal"/>
         </RelativeLayout>
 
         <TextView
@@ -81,6 +81,6 @@
             android:text="News content"
             android:textColor="@color/text_color_news_src"
             android:textSize="14sp"
-            android:textStyle="normal"></TextView>
+            android:textStyle="normal"/>
     </RelativeLayout>
 </FrameLayout>
