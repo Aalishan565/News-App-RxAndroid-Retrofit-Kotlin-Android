@@ -23,37 +23,37 @@ class MainActivityPresenterImpl(private val context: MainActivity) :
     private val TAG = "MainActivityPresenterImpl"
 
     @SuppressLint("LongLogTag")
-    override fun callGetNewsReqApi() {
+    override fun callGetNewsReqApi(countryCode: String) {
 
         Log.d(TAG, "callGetNewsReqApi()")
         if (AppUtils.isNetworkAvailable(context)) {
 
             val communicationManager = CommunicationManager().getInstance()
             val observable: Observable<NewsResponse> =
-                communicationManager.getNewsResponseReq()!!.subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-            observable.subscribe(object : Observer<NewsResponse> {
+                communicationManager.getNewsResponseReq(countryCode)!!.subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread()).apply {
+                        subscribe(object : Observer<NewsResponse> {
 
-                override fun onSubscribe(d: Disposable) {
-                }
+                            override fun onSubscribe(d: Disposable) {
+                            }
 
-                override fun onNext(response: NewsResponse) {
-                    //Todo
-                    Log.d(TAG, "response ${response?.articles}")
-                    listener.getNewsResponseReqSuccess(response?.articles)
-                }
+                            override fun onNext(response: NewsResponse) {
+                                Log.d(TAG, "response ${response?.articles}")
+                                listener.getNewsResponseReqSuccess(response?.articles)
+                            }
 
-                override fun onError(e: Throwable) {
-                    if (e != null) {
-                        Log.d(TAG, "onFailure ${e.message}")
-                        e.message?.let { listener.getApiResponseReqFail(it) }
+                            override fun onError(e: Throwable) {
+                                if (e != null) {
+                                    Log.d(TAG, "onFailure ${e.message}")
+                                    e.message?.let { listener.getApiResponseReqFail(it) }
+                                }
+                            }
+
+                            override fun onComplete() {
+
+                            }
+                        })
                     }
-                }
-
-                override fun onComplete() {
-
-                }
-            })
 
         } else {
             Log.d(TAG, "No internet connection")

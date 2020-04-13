@@ -4,7 +4,6 @@ import com.newsappkotlin.appUtils.MyAppConstant
 import com.newsappkotlin.dtos.NewsResponse
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -48,11 +47,11 @@ class CommunicationManager {
         return api
     }
 
-    fun getNewsResponseReq(): Observable<NewsResponse>? {
+    fun getNewsResponseReq(countryCode: String): Observable<NewsResponse>? {
         return try {
             getRetrofitInstance()?.getNewsResponse(
                 MyAppConstant.API_KEY_VALUE,
-                MyAppConstant.COUNTRY_VALUE
+                countryCode
             )
         } catch (e: Exception) {
             e.printStackTrace()

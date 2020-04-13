@@ -1,6 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameNews"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,13 +6,13 @@
     <ImageView
         android:id="@+id/ivNews"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_card"/>
+        android:background="@drawable/bg_card" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,8 +23,8 @@
             android:id="@+id/ivBack"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:onClick="backPress"
             android:layout_marginTop="20dp"
+            android:onClick="backPress"
             android:src="@drawable/ic_arrow_back_black_24dp">
 
         </ImageView>
@@ -36,13 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/rlDetail"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="50dp"
             android:ellipsize="end"
             android:maxLines="3"
             android:text="This is news title"
             android:textColor="@color/text_color_news_title"
-            android:textSize="29sp"
-            android:textStyle="bold"/>
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:id="@+id/rlDetail"
@@ -58,18 +56,18 @@
                 android:text="CNB"
                 android:textColor="@color/text_color_news_title"
                 android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvPublishedDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="2019-11-21"
                 android:maxLength="10"
+                android:text="2019-11-21"
                 android:textColor="@color/text_color_news_title"
                 android:textSize="20sp"
-                android:textStyle="normal"/>
+                android:textStyle="normal" />
         </RelativeLayout>
 
         <TextView
@@ -79,8 +77,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="16dp"
             android:text="News content"
+            android:scrollbars = "vertical"
             android:textColor="@color/text_color_news_src"
-            android:textSize="14sp"
-            android:textStyle="normal"/>
+            android:textSize="16sp"
+            android:textStyle="normal" />
     </RelativeLayout>
 </FrameLayout>
