@@ -29,19 +29,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="16dp"
-            android:overlapAnchor="false"
-            android:popupBackground="@color/colorPrimary"
-            android:spinnerMode="dropdown"
+            android:background="@drawable/custom_spn_background"
             app:layout_constraintBottom_toBottomOf="@+id/toolbarTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/toolbarTitle"
-            app:layout_constraintTop_toTopOf="@+id/toolbarTitle" />
+            app:layout_constraintTop_toTopOf="@+id/toolbarTitle">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="24dp"
+                android:overlapAnchor="false"
+                android:popupBackground="@color/colorPrimary"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:id="@+id/ivArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_arrow_drop_down_black_24dp">
+
+            </ImageView>
+
+        </RelativeLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

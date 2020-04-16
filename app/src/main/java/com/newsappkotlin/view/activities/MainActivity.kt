@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), MainActivityListener, AdapterView.OnIt
     private lateinit var presenter: MainActivityPresenter
     private lateinit var newsAdapter: NewsAdapter
     var arrayList = ArrayList<CountryDto>()
+    private var isSpinnerShown: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,22 +60,57 @@ class MainActivity : AppCompatActivity(), MainActivityListener, AdapterView.OnIt
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
+        isSpinnerShown = false
+        resources.getDrawable(
+            R.drawable.ic_arrow_drop_down_black_24dp,
+            null
+        )
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        isSpinnerShown = false
         showProgressBar()
         presenter.callGetNewsReqApi(arrayList[position].countryCode)
+        showDownIcon()
+
     }
 
-    fun showProgressBar() {
+    private fun showProgressBar() {
         progressBar.visibility = View.VISIBLE
     }
 
-    fun hideProgressBar() {
+    private fun hideProgressBar() {
         if (null != progressBar && progressBar.isVisible) {
             progressBar.visibility = View.GONE
         }
 
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (!hasFocus) {
+            showUpIcon()
+        } else {
+            showDownIcon()
+        }
+    }
+
+    private fun showUpIcon() {
+        ivArrow.setImageDrawable(
+            resources.getDrawable(
+                R.drawable.ic_arrow_drop_up_black_24dp,
+                null
+            )
+        )
+    }
+
+    private fun showDownIcon() {
+        ivArrow.setImageDrawable(
+            resources.getDrawable(
+                R.drawable.ic_arrow_drop_down_black_24dp,
+                null
+            )
+        )
     }
 
 }

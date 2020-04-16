@@ -1,6 +1,7 @@
 package com.newsappkotlin.view.activities
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.newsappkotlin.R
 import com.newsappkotlin.dtos.CountryDto
+import kotlin.math.log
 
 
 class CountryAdapter(context: Context, var countryArrayList: ArrayList<CountryDto>) :
@@ -45,4 +47,5 @@ class CountryAdapter(context: Context, var countryArrayList: ArrayList<CountryDt
     private inner class ItemRowHolder(row: View?) {
         val tvCountryName: TextView = row?.findViewById(R.id.tv_country) as TextView
     }
+
 }
