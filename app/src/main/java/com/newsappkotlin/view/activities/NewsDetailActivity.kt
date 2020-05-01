@@ -38,7 +38,9 @@ class NewsDetailActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             tvNewsContent.text = Html.fromHtml(newsDetail?.content, Html.FROM_HTML_MODE_COMPACT)
         } else {
-            tvNewsContent.text = Html.fromHtml(newsDetail?.content)
+            if(null!=newsDetail?.content){
+                tvNewsContent.text = Html.fromHtml(newsDetail?.content)
+            }
         }
         Log.d(TAG, "newsDetail ${newsDetail.toString()}")
     }
